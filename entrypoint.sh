@@ -1,8 +1,8 @@
 #!/bin/bash
+mkdir wrk/
 WEBSITE="https://www.targetwebsite.com/"
 
-echo Escaneando host ${WEBSITE}
-mkdir wrk/ 
+echo "Scanning host: \"${WEBSITE}\""
 zap-full-scan.py -t ${WEBSITE} -r ./report.html
 
 SMTP_HOST="email-smtp.{region}.amazonaws.com"
@@ -12,7 +12,7 @@ SMTP_PASS=""
 EMAIL_FROM=""
 EMAIL_TO=""
 NOW=$(date +'%d/%m/%Y')
-SUBJECT="Title of the e-mail"
+SUBJECT="Vulnerability report from $WEBSITE - $NOW"
 
 ## Sending email
  
